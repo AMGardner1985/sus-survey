@@ -13,7 +13,6 @@ export class SusSurveyFormService {
   url: string = 'http://localhost:8080/susSurveys';
   
   postSusSurveyForm(susSurvey: SusSurvey) : Observable<any> {
-    //return of(susSurvey);
     return this.httpClient.post(this.url, susSurvey);
   }
 }

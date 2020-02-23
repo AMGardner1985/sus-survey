@@ -11,9 +11,9 @@ import { SusSurveyFormService } from './sus-survey-form.service';
 export class SusSurveyFormComponent implements OnInit {
 
   constructor(private susSurveyFormService: SusSurveyFormService) { }
-  
 
-  originalSusSurvey : SusSurvey = {
+
+  originalSusSurvey: SusSurvey = {
     respondent: null,
     application: null,
     version: null,
@@ -30,21 +30,45 @@ export class SusSurveyFormComponent implements OnInit {
     q10: 1
   };
 
-  susSurvey : SusSurvey = { ...this.originalSusSurvey };
+  susSurvey: SusSurvey = { ...this.originalSusSurvey };
+
+  postError: boolean = false;
+  postErrorMessage: string = '';
+  postSuccess: boolean = false;
+  postSuccessMessage: string = '';
+  
 
   ngOnInit() {
   }
 
-  setSurveyDate(){
+  setSurveyDate() {
     this.susSurvey.surveyDate = new Date();
   }
 
-  onSubmit(form : NgForm){
+  onSubmit(form: NgForm) {
     console.log('in onSubmit: ', form.valid);
-    this.setSurveyDate();
-    this.susSurveyFormService.postSusSurveyForm(this.susSurvey).subscribe(
-      results => console.log('sucess: ', results),
-      error => console.log('error: ', error)
-    );
+    if (form.valid) {
+      this.postError = false;
+      this.setSurveyDate();
+      this.susSurveyFormService.postSusSurveyForm(this.susSurvey).subscribe(
+        results => this.onHttpSuccess(results),
+        error => this.onHttpError(error)
+      );
+    } else {
+      this.postError = true;  
+      this.postErrorMessage = "Please be sure to include all required information and answer all questions."
+    }
+  }
+
+  onHttpSuccess(resultsResponse: any){
+    console.log('sucess: ', resultsResponse);
+    this.postSuccess = true;
+    this.postSuccessMessage = "Survey submitted successfully - (SUS) score of " + resultsResponse.surveyScore;
+  }
+
+  onHttpError(errorResponse: any) {
+    console.log('error: ', errorResponse);
+    this.postError = true;
+    this.postErrorMessage = errorResponse.error.error + " - please try again later or contact technical support.";
   }
 }
