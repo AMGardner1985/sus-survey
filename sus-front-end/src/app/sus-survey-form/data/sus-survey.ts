@@ -1,7 +1,8 @@
 export interface SusSurvey {
-   respondant: string,
+   respondent: string,
    application: string,
    version: string,
+   surveyDate: Date,
    q1: number,
    q2: number,
    q3: number,

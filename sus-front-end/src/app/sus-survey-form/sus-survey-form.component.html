@@ -1,66 +1,72 @@
 <div class="container">
     <h2>System Usability Scale (SUS) Survey</h2>
     <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-        
+
         <div class="form-group">
             <label for="respondant">Standard Id</label>
-            <input id="respondant" name="respondant" 
-                class="form-control" [(ngModel)]="susSurvey.respondant"
-                required pattern="[a-z0-9A-Z]{7}"
-                />
+            <input id="respondant" name="respondant" class="form-control" [(ngModel)]="susSurvey.respondent" required
+                pattern="[a-z0-9A-Z]{7}" #respondantField="ngModel">
+            <div [hidden]="respondantField.valid || respondantField.untouched" class="text-danger">
+                Enter a standard id
+            </div>
         </div>
-        
 
         <div class="form-row">
             <div class="form-group col-md-8">
                 <label for="application">Application</label>
-                <input id="application" name="application" 
-                    class="form-control" [(ngModel)]="susSurvey.application"
-                    required />
+                <input id="application" name="application" class="form-control" [(ngModel)]="susSurvey.application"
+                    required #applicationField="ngModel" />
+                <div [hidden]="applicationField.valid || applicationField.untouched" class="text-danger">
+                    Enter an application
+                </div>
             </div>
             <div class="form-group col-md-4">
                 <label for="app-version">Application Version</label>
-                <input id="app-version" name="app-version" class="form-control" [(ngModel)]="susSurvey.version"/>
+                <input id="app-version" name="app-version" class="form-control" [(ngModel)]="susSurvey.version" />
             </div>
         </div>
-
-  
 
         <div class="form-group">
             <h5>1. I think that I would like to use this system frequently.</h5>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios1" value=1 [(ngModel)]="susSurvey.q1"/>
+                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios1" value=1
+                    [(ngModel)]="susSurvey.q1" />
                 <label class="form-check-label" for="questionOneRadios1">
                     1 - Strongly Disagree
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios2" value=2 [(ngModel)]="susSurvey.q1">
+                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios2" value=2
+                    [(ngModel)]="susSurvey.q1">
                 <label class="form-check-label" for="questionOneRadios2">
                     2 - Disagree
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios3" value=3 [(ngModel)]="susSurvey.q1">
+                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios3" value=3
+                    [(ngModel)]="susSurvey.q1">
                 <label class="form-check-label" for="questionOneRadios3">
                     3 - Neutral
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios4" value="4" [(ngModel)]="susSurvey.q1">
+                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios4" value="4"
+                    [(ngModel)]="susSurvey.q1">
                 <label class="form-check-label" for="questionOneRadios4">
                     4 - Agree
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios5" value=5 [(ngModel)]="susSurvey.q1">
+                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios5" value=5
+                    [(ngModel)]="susSurvey.q1">
                 <label class="form-check-label" for="questionOneRadios5">
                     5 - Strongly Agree
                 </label>
             </div>
-            
         </div>
 
+        <!-- todo make button red when form not valid 
+            [class.btn-success]="form.valid" [class.btn-dark]="!form.valid"-->
         <button class="btn btn-dark">Submit</button>
     </form>
 </div>
