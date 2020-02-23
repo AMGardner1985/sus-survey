@@ -19,7 +19,7 @@ export class SusSurveyFormComponent implements OnInit {
     version: null,
     surveyDate: null,
     q1: null,
-    q2: 1,
+    q2: null,
     q3: 1,
     q4: 1,
     q5: 1,
@@ -71,4 +71,5 @@ export class SusSurveyFormComponent implements OnInit {
     this.postError = true;
     this.postErrorMessage = errorResponse.error.error + " - please try again later or contact technical support.";
   }
+
 }
