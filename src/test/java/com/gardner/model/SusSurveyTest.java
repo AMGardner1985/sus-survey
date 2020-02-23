@@ -41,7 +41,6 @@ public class SusSurveyTest {
     @Test
     public void getSurveyScoreOfSurveyWithAll5ReturnsScoreOf50(){
         SusSurvey allFiveSurvey = SusSurveyStub.get(1L);
-        allFiveSurvey.setSurveyScore();
         double surveyScore = allFiveSurvey.getSurveyScore();
         assertThat(surveyScore).isEqualTo(50);
     }
@@ -49,7 +48,6 @@ public class SusSurveyTest {
     @Test
     public void getSurveyScoreForBestPossibleSurveyReturns100(){
         SusSurvey bestPossibleSurvey = SusSurveyStub.get(2L);
-        bestPossibleSurvey.setSurveyScore();
         double surveyScore = bestPossibleSurvey.getSurveyScore();
         assertThat(surveyScore).isEqualTo(100);
     }
