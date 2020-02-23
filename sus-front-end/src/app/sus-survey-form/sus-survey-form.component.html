@@ -1,20 +1,20 @@
 <div class="container">
     <h2>System Usability Scale (SUS) Survey</h2>
-    <form>
+    <form #form="ngForm">
         
         <div class="form-group">
             <label for="standard-id">Standard Id</label>
-            <input id="standard-id" name="standard-id" class="form-control">
+            <input id="standard-id" name="standard-id" class="form-control" ngModel/>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-8">
                 <label for="application">Application</label>
-                <input id="application" name="application" class="form-control">
+                <input id="application" name="application" class="form-control" ngModel/>
             </div>
             <div class="form-group col-md-4">
                 <label for="app-version">Application Version</label>
-                <input id="app-version" name="app-version" class="form-control">
+                <input id="app-version" name="app-version" class="form-control" ngModel/>
             </div>
         </div>
 
@@ -23,31 +23,31 @@
         <div class="form-group">
             <h5>1. I think that I would like to use this system frequently.</h5>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios1" value="1"/>
+                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios1" value="1" ngModel/>
                 <label class="form-check-label" for="questionOneRadios1">
                     1 - Strongly Disagree
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios2" value="2">
+                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios2" value="2" ngModel>
                 <label class="form-check-label" for="questionOneRadios2">
                     2 - Disagree
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios3" value="3">
+                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios3" value="3" ngModel>
                 <label class="form-check-label" for="questionOneRadios3">
                     3 - Neutral
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios4" value="4">
+                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios4" value="4" ngModel>
                 <label class="form-check-label" for="questionOneRadios4">
                     4 - Agree
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios5" value="5">
+                <input class="form-check-input" type="radio" name="questionOneRadios" id="questionOneRadios5" value="5" ngModel>
                 <label class="form-check-label" for="questionOneRadios5">
                     5 - Strongly Agree
                 </label>
@@ -58,3 +58,5 @@
         <button class="btn btn-dark">Submit</button>
     </form>
 </div>
+
+{{ form.value | json }}
